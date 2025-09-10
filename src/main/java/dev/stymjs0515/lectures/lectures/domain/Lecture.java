@@ -3,6 +3,7 @@ package dev.stymjs0515.lectures.lectures.domain;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
@@ -27,16 +28,19 @@ public class Lecture {
     private Long id;
 
     @Column(nullable = false)
-    private long lecturerId;
+    private Long lecturerMemberId;
 
     @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
-    private long capacity;
+    private Long capacity;
 
     @Column(nullable = false)
-    private long price;
+    private Long enrolled;
+
+    @Column(nullable = false)
+    private Long price;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -47,11 +51,12 @@ public class Lecture {
     private Timestamp updatedAt;
 
     @Builder
-    public Lecture(long lecturerId, String title, long capacity, long price) {
-        this.lecturerId = lecturerId;
+    public Lecture(long lecturerMemberId, String title, long capacity, long price) {
+        this.lecturerMemberId = lecturerMemberId;
         this.title = title;
         this.capacity = capacity;
         this.price = price;
+        this.enrolled = 0L;
     }
 
 }

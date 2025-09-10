@@ -1,7 +1,5 @@
 package dev.stymjs0515.lectures.member.infra;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import dev.stymjs0515.lectures.member.domain.Member;

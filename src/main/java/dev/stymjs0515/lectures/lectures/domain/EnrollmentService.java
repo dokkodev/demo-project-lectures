@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 public class EnrollmentService {
 
     private final Enrollments enrollments;
+    private final Lectures lectures;
     private final LectureQueryService lectureQueryService;
 
     @Transactional
@@ -20,6 +21,11 @@ public class EnrollmentService {
 
         if (enrollments.existsByLectureIdAndMemberId(request.lectureId(), request.memberId())) {
             return null;
+        }
+
+        int enrolled = lectures.tryEnroll(request.lectureId());
+        if (enrolled == 0) {
+            throw new LectureCapacityExceededException();
         }
 
         Enrollment enrollment = enrollments.save(of(request));

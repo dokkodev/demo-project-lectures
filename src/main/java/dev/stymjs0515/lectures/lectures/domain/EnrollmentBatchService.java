@@ -21,6 +21,8 @@ public class EnrollmentBatchService {
             enrollmentService.enroll(new EnrollRequest(lectureId, memberId));
         } catch (LectureNotFoundException e) {
             // ignore
+        } catch (LectureCapacityExceededException e) {
+            // ignore
         }
     }
 
