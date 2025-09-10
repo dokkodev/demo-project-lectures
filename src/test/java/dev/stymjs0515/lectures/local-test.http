@@ -1,1 +1,14 @@
+###
 GET http://localhost:8080/
+
+###
+POST http://localhost:8080/members
+Content-type: application/json
+
+{
+    "name": "이재서",
+    "email": "asdf@asdf.com",
+    "phoneNo": "010-1234-5678",
+    "password": "asdf1234",
+    "type": "STUDENT"
+}
