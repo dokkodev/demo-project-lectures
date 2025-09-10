@@ -6,4 +6,5 @@ import dev.stymjs0515.lectures.lectures.domain.Lecture;
 import dev.stymjs0515.lectures.lectures.domain.Lectures;
 
 public interface LectureJpaRepository extends Lectures, JpaRepository<Lecture, Long> {
+    boolean existsById(long id);
 }

@@ -7,10 +7,10 @@ Content-type: application/json
 
 {
     "name": "이재서",
-    "email": "asdf@asdf.com",
+    "email": "asdf@asdffd.com",
     "phoneNo": "010-1234-5678",
     "password": "asdf1234",
-    "type": "STUDENT"
+    "type": "LECTURER"
 }
 
 
@@ -19,8 +19,28 @@ POST http://localhost:8080/lectures
 Content-type: application/json
 
 {
-    "lecturerId": 2,
+    "memberId": 1,
     "title": "자바 프로그래밍",
     "capacity": 30,
     "price": 10000
+}
+
+###
+POST http://localhost:8080/lectures/1/enrollments
+Content-type: application/json
+
+{
+    "memberId": 1
+}
+
+
+###
+POST http://localhost:8080/enrollments
+Content-type: application/json
+
+{
+    "memberId": 1,
+    "lectureIds": [
+        1,2,3,4,5,6
+    ]
 }

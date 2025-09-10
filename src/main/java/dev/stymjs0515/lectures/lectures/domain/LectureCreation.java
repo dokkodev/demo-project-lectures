@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Positive;
 
 public record LectureCreation (
     @NotNull
-    Long lecturerId,
+    Long memberId,
 
     @NotBlank
     String title,

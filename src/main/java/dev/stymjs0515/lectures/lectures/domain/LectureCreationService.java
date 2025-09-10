@@ -19,7 +19,7 @@ public class LectureCreationService {
 
     Lecture of(LectureCreation lectureCreation) {
         return Lecture.builder()
-                      .lecturerId(lectureCreation.lecturerId())
+                      .lecturerId(lectureCreation.memberId())
                       .title(lectureCreation.title())
                       .capacity(lectureCreation.capacity())
                       .price(lectureCreation.price())

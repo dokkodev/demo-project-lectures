@@ -8,9 +8,6 @@ import static org.mockito.Mockito.mock;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import dev.stymjs0515.lectures.member.domain.SignupService.EmailAlreadyInUseException;
-import dev.stymjs0515.lectures.member.domain.SignupService.WeakPasswordException;
-
 class SignupServiceTest {
 
     Members members = mock(Members.class);
