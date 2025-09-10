@@ -2,6 +2,7 @@ package dev.stymjs0515.lectures.lecture;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,9 +39,13 @@ public class EnrollmentConcurrencyTest {
 
     @Test
     void testConcurrentBath() throws InterruptedException{
+
+        // given
         given5LectureWith5CapacityEach();
         given100Students();
 
+
+        // when
         CountDownLatch startLatch = new CountDownLatch(1);
         CountDownLatch endLatch = new CountDownLatch(100);
         ExecutorService executorService = Executors.newFixedThreadPool(20);
@@ -51,7 +56,7 @@ public class EnrollmentConcurrencyTest {
                 try {
                     startLatch.await();
                     enrollmentBatchService.enrollBatch(
-                        new EnrollRequestBatch(memberId, java.util.List.of(1L, 2L, 3L, 4L, 5L))
+                        new EnrollRequestBatch(memberId, List.of(1L, 2L, 3L, 4L, 5L))
                     );
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -65,7 +70,6 @@ public class EnrollmentConcurrencyTest {
         endLatch.await();
         executorService.shutdown();
 
-        // when
         PagedModel<LectureView> result = lectureViewController.getLectureViews(1L, 0, 5, LectureViewSortBy.POPULAR_RATE);
 
         // then
@@ -78,7 +82,6 @@ public class EnrollmentConcurrencyTest {
 
 
     void given5LectureWith5CapacityEach() {
-
         long lecturerId = members.save(
             Member
                 .builder()

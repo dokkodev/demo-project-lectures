@@ -1,8 +1,5 @@
 package dev.stymjs0515.lectures.lectures.infra;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +21,7 @@ public class LectureViewController {
     public PagedModel<LectureView> getLectureViews(
         @RequestParam(value = "memberId") Long memberId,
         @RequestParam(value = "page", defaultValue = "0") int page,
-        @RequestParam(value = "size", defaultValue = "10") int size,
+        @RequestParam(value = "size", defaultValue = "20") int size,
         @RequestParam(value = "sort", defaultValue = "RECENT") LectureViewSortBy sortBy
     ) {
         return new PagedModel<>(lectureQueryService.pageRecent(memberId, page, size, sortBy));

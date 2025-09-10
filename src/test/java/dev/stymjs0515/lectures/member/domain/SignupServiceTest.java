@@ -10,9 +10,8 @@ import org.junit.jupiter.api.function.Executable;
 
 class SignupServiceTest {
 
-    Members members = mock(Members.class);
-
-    SignupService cut = new SignupService(members);
+    final Members members = mock(Members.class);
+    final SignupService cut = new SignupService(members);
 
     @Test
     void signupSuccess() {
