@@ -12,3 +12,15 @@ Content-type: application/json
     "password": "asdf1234",
     "type": "STUDENT"
 }
+
+
+###
+POST http://localhost:8080/lectures
+Content-type: application/json
+
+{
+    "lecturerId": 2,
+    "title": "자바 프로그래밍",
+    "capacity": 30,
+    "price": 10000
+}
